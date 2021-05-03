@@ -1,0 +1,17 @@
+$color: $white;
+$bg_color: $dove_gray;
+
+
+nav.top {
+    background-color: $bg_color;
+    color: $color;
+    display: flex;
+    justify-content: flex-start;
+
+    a {
+        color: $color;
+        text-decoration: none;
+        padding: 0.5em;
+    }
+}
+    
