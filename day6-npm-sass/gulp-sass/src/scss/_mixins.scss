@@ -1,0 +1,5 @@
+@mixin rounded-box($height) {
+    height: $height;
+    border-radius: $height / 2;
+    padding: $height / 4;
+}

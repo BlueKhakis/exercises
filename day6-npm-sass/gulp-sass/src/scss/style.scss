@@ -1,17 +1,27 @@
+@import 'variables';
+@import 'mixins';
+
 body {
-    background-color: blue;
-    color: white;
+    color: $primary_color;
+    max-width: $desktop_screen_width;
+    margin: 0 auto;
 }
 
 html {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: $main_font;
 }
 
 main {
     padding: 2em;
 }
 
+// headline
 h1 {
     text-decoration: underline;
+    color: $secondary_color;
+    background-color: gray;
+    @include rounded-box(4em);
 }
+
+@import 'components/header';
 

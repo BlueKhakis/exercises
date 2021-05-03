@@ -1,0 +1,28 @@
+.header {
+    font-family: $main_font;
+    background-color: white;
+    padding: 1em;
+    border-bottom: 1px solid $primary_color;
+
+    @at-root body.with-fixed-header & { // body.with-fixed-header .header
+        position: fixed;
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
+
+    &__menu {
+
+    }
+
+    &__menu-link {
+        color: $secondary_color;
+        background-color: greenyellow;
+        @include rounded-box(3em);
+
+        // & = 'header nav a'
+        &:hover { // = 'header nav a:hover'
+            text-decoration: none;
+        }
+    }
+}
