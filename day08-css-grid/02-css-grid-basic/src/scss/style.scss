@@ -1,0 +1,40 @@
+$red: rgba(255, 0, 0, 0.5);
+$green: rgba(0, 255, 0, 0.5);
+$blue: rgba(0, 0, 255, 0.5);
+$orange: rgba(255, 165, 0, 0.5);
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    height: 100vh;
+    background-image: url('../img/100_grid.jpg');
+}
+
+.container {
+    width: 200px;
+    height: 200px; 
+    display: grid;
+    grid-template-columns: 100px 100px;
+    grid-template-rows: 100px 100px;
+    background-color: rgba(128,128,128, 0.5);
+}
+
+// .item {
+//     width: 100px;
+//     height: 100px;
+// }
+
+.red {
+    background-color: $red;
+}
+
+.blue {
+    background-color: $blue;
+}
+
+.green {
+    background-color: $green;
+}
