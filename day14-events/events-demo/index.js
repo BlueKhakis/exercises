@@ -38,13 +38,19 @@ console.log('CHECKPOINT 3');
 const interval_id = setInterval(() => {
     // after 1000ms, after 2000ms, after 3000ms ...
     document.querySelector('.headline').innerHTML += '! ';
-}, 100);
+}, 10000);
 
+/**
+ * stops the interval that adds exclamation marks
+ */
 const stopExclamationMarks = () => {
     clearInterval(interval_id);
     console.log('Interval stopped');
 }
 
+/**
+ * stops the timeout that adds !!! after 5000ms
+ */
 const stop5sTimeout = () => {
     clearTimeout(fiveSecTimeout_id);
     console.log('timeout cleared');
@@ -56,6 +62,57 @@ const timer_interval_id = setInterval(() => {
     document.querySelector('.timer').innerHTML = time++ + ' seconds since page load';
 }, 1000);
 
+/**
+ * stops the timer that shows seconds
+ * elapsed since page load
+ */
 const stopTimer = () => {
     clearInterval(timer_interval_id);
 }
+
+const stop_button = document.querySelector('.stop_button');
+
+stop_button.addEventListener('click', () => {
+    stopExclamationMarks();
+    stopTimer();
+})
+
+
+document.querySelector('.stop_timer').addEventListener(
+    'click',
+    stopTimer
+);
+
+document.querySelector('.stop_timer').addEventListener('click', () => {
+    alert('Paused!');
+})
+
+const add_qmark = () => {
+    document.querySelector('.headline').innerHTML += '?';
+}
+
+document.querySelector('.add_question_mark').addEventListener('click', add_qmark);
+
+document.querySelector('.prevent_qmarks').addEventListener('click', () => {
+    document.querySelector('.add_question_mark').removeEventListener('click', add_qmark);
+    console.log('The button .add_question_mark can no longer add question marks');
+})
+
+let box_left = 0,
+    box_top = 0;
+
+window.addEventListener('keyup', (event) => {
+    if (event.key === 'ArrowLeft') {
+        box_left -= 100;
+        document.querySelector('.box').style.left = box_left + 'px';
+    } else if (event.key === 'ArrowRight') {
+        box_left += 100;
+        document.querySelector('.box').style.left = box_left + 'px';
+    } else if (event.key === 'ArrowUp') {
+        box_top -= 100;
+        document.querySelector('.box').style.top = box_top + 'px';
+    } else if (event.key === 'ArrowDown') {
+        box_top += 100;
+        document.querySelector('.box').style.top = box_top + 'px';
+    }
+})
