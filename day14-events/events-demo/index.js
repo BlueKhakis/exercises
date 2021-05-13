@@ -50,7 +50,12 @@ const stop5sTimeout = () => {
     console.log('timeout cleared');
 }
 
-let time = 1;
-setInterval(() => {
+let time = 0;
+document.querySelector('.timer').innerHTML = time++ + ' seconds since page load';
+const timer_interval_id = setInterval(() => {
     document.querySelector('.timer').innerHTML = time++ + ' seconds since page load';
 }, 1000);
+
+const stopTimer = () => {
+    clearInterval(timer_interval_id);
+}
