@@ -58,7 +58,7 @@ const stop5sTimeout = () => {
 
 let time = 0;
 document.querySelector('.timer').innerHTML = time++ + ' seconds since page load';
-const timer_interval_id = setInterval(() => {
+const timer_interval_id = setInterval((event) => {
     document.querySelector('.timer').innerHTML = time++ + ' seconds since page load';
 }, 1000);
 
@@ -66,13 +66,13 @@ const timer_interval_id = setInterval(() => {
  * stops the timer that shows seconds
  * elapsed since page load
  */
-const stopTimer = () => {
+const stopTimer = (event) => {
     clearInterval(timer_interval_id);
 }
 
 const stop_button = document.querySelector('.stop_button');
 
-stop_button.addEventListener('click', () => {
+stop_button.addEventListener('click', (event) => {
     stopExclamationMarks();
     stopTimer();
 })
@@ -83,7 +83,7 @@ document.querySelector('.stop_timer').addEventListener(
     stopTimer
 );
 
-document.querySelector('.stop_timer').addEventListener('click', () => {
+document.querySelector('.stop_timer').addEventListener('click', (event) => {
     alert('Paused!');
 })
 
@@ -93,7 +93,7 @@ const add_qmark = () => {
 
 document.querySelector('.add_question_mark').addEventListener('click', add_qmark);
 
-document.querySelector('.prevent_qmarks').addEventListener('click', () => {
+document.querySelector('.prevent_qmarks').addEventListener('click', (event) => {
     document.querySelector('.add_question_mark').removeEventListener('click', add_qmark);
     console.log('The button .add_question_mark can no longer add question marks');
 })
@@ -103,16 +103,42 @@ let box_left = 0,
 
 window.addEventListener('keyup', (event) => {
     if (event.key === 'ArrowLeft') {
-        box_left -= 100;
+        box_left -= 10;
         document.querySelector('.box').style.left = box_left + 'px';
     } else if (event.key === 'ArrowRight') {
-        box_left += 100;
+        box_left += 10;
         document.querySelector('.box').style.left = box_left + 'px';
     } else if (event.key === 'ArrowUp') {
-        box_top -= 100;
+        box_top -= 10;
         document.querySelector('.box').style.top = box_top + 'px';
     } else if (event.key === 'ArrowDown') {
-        box_top += 100;
+        box_top += 10;
         document.querySelector('.box').style.top = box_top + 'px';
     }
+})
+
+const greetByName = (event) => {
+    event.preventDefault(); // prevent the form from submitting
+
+    const first_name = document.querySelector('[name="first-name"]').value;
+    const last_name = document.querySelector('[name="last-name"]').value;
+
+    document.querySelector('.headline').innerHTML = 'Hello, ' + first_name + ' ' + last_name;
+}
+
+document.querySelector('.submit-form-button').addEventListener('click', greetByName);
+
+document.querySelector('.background').addEventListener('click', () => {
+    document.querySelector('.headline').innerHTML = 'Background clicked!';
+})
+
+document.querySelector('.button-on-background').addEventListener('click', (event) => {
+
+    event.stopPropagation();
+
+    document.querySelector('.headline').innerHTML = 'Button on background clicked!';
+})
+
+document.querySelector('body').addEventListener('click', () => {
+    console.log('Anything in the body was clicked');
 })

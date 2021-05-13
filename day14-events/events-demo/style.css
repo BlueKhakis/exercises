@@ -5,4 +5,20 @@
     position: fixed;
     left: 0;
     top: 0;
+    display: none;
+}
+
+form {
+    margin: 2em;
+    border: 1px solid red;
+}
+
+.background {
+    background: rgb(70, 187, 109);
+    padding: 4em;
+}
+
+.button-on-background {
+    padding: 1em;
+    background-color: white;
 }
