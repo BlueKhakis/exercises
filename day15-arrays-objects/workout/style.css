@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    width: 30em;
+    border: 1px solid silver;
+    padding: 2em;
+}
+
+.padlock {
+    width: 10em;
+}
+
+.text {
+    display: none;
+}
+
+.text.visible,
+.container.unlocked .text {
+    display: block;
+}
+
+.container.unlocked .padlock {
+    opacity: 0.5;
+}
