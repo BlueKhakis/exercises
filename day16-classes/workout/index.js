@@ -1,4 +1,10 @@
-const appendMessage = (message) => {
+class Messages {
+
+}
+
+Messages.next_message = 0;
+
+Messages.appendMessage = (message) => {
 
     const container = document.querySelector('.conversation');
 
@@ -11,7 +17,7 @@ const appendMessage = (message) => {
         </div>`;
 }
 
-let next_message = 0;
+
 
 
 
@@ -38,7 +44,7 @@ console.log(remote_messages);
 
 const interval_id = setInterval(() => {
 
-    appendMessage(conversation[next_message]);
+    Messages.appendMessage(conversation[Messages.next_message]);
 
     next_message++;
 
