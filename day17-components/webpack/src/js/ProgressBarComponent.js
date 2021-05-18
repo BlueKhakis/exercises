@@ -1,4 +1,10 @@
-export class ProgressBar {
+export const my_function = () => {
+    console.log('my function');
+}
+
+import Counter from './Counter.js';
+
+export default class ProgressBar {
 
     constructor(container) {
 
@@ -22,9 +28,9 @@ export class ProgressBar {
 
         let html =
         `<div class="progress-bar">
-            <div class="label">
-                <span class="counter">4</span>/<span class="maximum">10</span>
-            </div>
+
+            <div class="counter-component"></div>
+
             <div class="progress">
                 <div class="btn-minus"></div>
                 <div class="bar">
@@ -39,6 +45,9 @@ export class ProgressBar {
 
         // get the progress bar element as an object
         this.progress_bar = div.firstChild;
+
+        // create the counter component
+        this.counter = new Counter(this.value, this.progress_bar.querySelector('.counter-component'));
 
         // activate the buttons within this progress bar
         this.initializeButtons();
@@ -90,8 +99,9 @@ export class ProgressBar {
 
     setCounterValue() {
 
-        const counter = this.progress_bar.querySelector('.counter');
-        counter.innerHTML = this.value / 10;
+        this.counter.setValue(this.value);
+        // const counter = this.progress_bar.querySelector('.counter');
+        // counter.innerHTML = this.value / 10;
 
     }
 

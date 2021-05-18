@@ -3,8 +3,8 @@ import './index.html';
 import './css/style.scss';
 import './style.css';
 
-import { ProgressBar } from './js/ProgressBarComponent.js';
-
-document.querySelector('main').innerHTML = 'Hello';
+import ProgressBar, { my_function } from './js/ProgressBarComponent.js';
 
 new ProgressBar( document.querySelector('main') );
+
+my_function();
