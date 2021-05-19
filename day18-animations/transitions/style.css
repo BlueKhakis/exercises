@@ -1,0 +1,61 @@
+#exercise_fixed_box {
+    position: fixed;
+    left: 10%;
+    top: 10%;
+    height: 50px;
+    width: 50px;
+    background-color: green;
+    color: white;
+
+    transition: all 20s cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+#exercise_fixed_box.clicked {
+    left: 90%;
+    top: 90%;
+    background-color: yellow;
+    color: black;
+    border-radius: 50%;
+}
+
+
+body {
+    display: flex;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    text-align: center;
+    background-color: gray;
+    overflow: hidden;
+
+    transition: width 5s ease;
+}
+
+nav.hovered {
+    width: 100px;
+}
+
+
+#exercise_bg_box {
+    padding: 2em;
+    background-color: red;
+    color: white;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    transition: all 2s ease;
+}
+
+#exercise_bg_box.changed {
+    background-color: orange;
+    color: black;
+    border: 10px dashed black;
+    font-size: 2em;
+    opacity: 0.7;
+    padding: 1em;
+    width: 20em;
+    height: 50px;
+}
