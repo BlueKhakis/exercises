@@ -3,17 +3,17 @@ const counter = document.querySelector('.rating__value')
 
 const stars = document.querySelectorAll('.rating__star');
 
-stars.forEach(function (star, index) {
+stars.forEach((star, index) => {
     star.addEventListener('click', () => {
         handleClick(index)
     })
 })
 
-function handleClick(index) {
+const handleClick = (index) => {
 
     currentValue = index+1;
 
-    stars.forEach(function (star, index) {
+    stars.forEach((star, index) => {
         if(index < currentValue) {
             star.classList.add('rating__star--on');
         } else {
