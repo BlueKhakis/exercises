@@ -2,16 +2,16 @@
 
 /**
  * mock implementation of basic database operations
- * 
+ *
  * to be used in exercises before databases are taught
- * 
- * all data is being stored and retrieved in JSON format in a single file data.json which will be created 
+ *
+ * all data is being stored and retrieved in JSON format in a single file data.json which will be created
  * next to the executed script (e.g. index.php)
  * if a different data file location is required, it can be set using the global constant DATA_FILE_LOCATION,
  * e.g. define('DATA_FILE_LOCATION', 'C:\www\some\path\my_data.json');
- * 
+ *
  * the globally exposed functions that can be used to use this class:
- * 
+ *
  * $id = insert($data)
  * update($id, $data)
  * delete($id)
@@ -81,7 +81,7 @@ class DBBlackbox
 
     /**
      * updates data, returns id
-     * 
+     *
      * merges the data with simple array_merge
      */
     public static function update($id = null, $data = [])
@@ -100,6 +100,10 @@ class DBBlackbox
 
         if (is_object($data)) {
             $data = (array)$data;
+
+            if (isset($data['id'])) {
+                unset($data['id']);
+            }
         }
 
         static::$data[$id] = array_merge(isset(static::$data[$id]) ? static::$data[$id] : [], $data);
@@ -111,7 +115,7 @@ class DBBlackbox
 
     /**
      * deletes one record based on it's id
-     * 
+     *
      * returns false if the record was not found
      */
     public static function delete($id)
@@ -144,11 +148,11 @@ class DBBlackbox
 
         if ($objects === true) {
             foreach ($data as $key => &$item) {
-                $item = static::hydrateObject($item);
+                $item = static::hydrateObject($item, $key);
             }
         } elseif ($objects && is_string($objects)) {
             foreach ($data as $key => &$item) {
-                $item = static::hydrateObject($item, $objects);
+                $item = static::hydrateObject($item, $key, $objects);
             }
         }
 
@@ -163,11 +167,11 @@ class DBBlackbox
         static::load();
 
         if (array_key_exists($id, static::$data)) {
-            
+
             if ($objects === true) {
-                return static::hydrateObject(static::$data[$id]);
+                return static::hydrateObject(static::$data[$id], $id);
             } elseif ($objects && is_string($objects)) {
-                return static::hydrateObject(static::$data[$id], $objects);
+                return static::hydrateObject(static::$data[$id], $id, $objects);
             }
 
             return static::$data[$id];
@@ -178,13 +182,15 @@ class DBBlackbox
 
     /**
      * makes an object of a specific class from an array of data
-     * 
+     *
      * the class must have its relevant properties declared as public
      */
-    protected static function hydrateObject(array $data, $class = 'stdClass')
+    protected static function hydrateObject(array $data, $id, $class = 'stdClass')
     {
         $object = new $class;
-        
+
+        $data['id'] = $id;
+
         foreach ($data as $key => $value) {
             $object->{$key} = $value;
         }

@@ -3,6 +3,72 @@
 // make sure we have functions for database access
 require_once 'DBBlackboxV2.php';
 
+class FlashedData
+{
+    // flashed data is part of the FlashedData class, no longer just a global variable
+    public static $data = null;
+
+    public static function getFlashedData()
+    {
+        if (static::$data === null) {
+            static::$data = [];
+
+            if (isset($_SESSION['flashed_data'])) {
+                static::$data = $_SESSION['flashed_data'];
+                unset($_SESSION['flashed_data']);
+            }
+        }
+
+        return static::$data;
+    }
+}
+
+/**
+ * gets the value submitted in the previous request by its name
+ *
+ * allows to pass an optional second argument which is returned
+ * if such an element does not exist in old data
+ */
+function old($name, $default_value = null)
+{
+    $flashed_data = FlashedData::getFlashedData();
+
+    if (isset($flashed_data[$name])) {
+        return $flashed_data[$name];
+    } else {
+        return $default_value;
+    }
+}
+
+function getFlashedMessages()
+{
+    $flashed_messages = [];
+
+    if (isset($_SESSION['error_messages'])) {
+        $flashed_messages = $_SESSION['error_messages'];
+        unset($_SESSION['error_messages']);
+    }
+
+    return $flashed_messages;
+}
+
+// start the session
+session_start();
+
+// get success message from session and delete it: *flashing*
+if (isset($_SESSION['success_message'])) {
+    $success_message = $_SESSION['success_message'];
+    unset($_SESSION['success_message']); // delete success_message from the session
+}
+
+// $error_messages = [];
+// if (isset($_SESSION['error_messages'])) {
+//     $error_messages = $_SESSION['error_messages'];
+//     unset($_SESSION['error_messages']); // delete error_messages from the session
+// }
+// now I have $error_messages array (empty or not)
+
+
 // determine if we are creating a new contact message
 // or editing an existing one
 if (isset($_GET['id'])) {
@@ -54,14 +120,33 @@ if ($is_edit) {
 </head>
 <body>
 
-    <form action="handle-form.php" method="post">
+    <?php if ($is_edit) : ?>
+        <h1>Editing record <?= $contact_message_id ?></h1>
+    <?php else : ?>
+        <h1>Creating a new record</h1>
+    <?php endif; ?>
+
+    <?php if (isset($success_message)) : ?>
+        <div class="message">
+            <strong><?= $success_message ?></strong>
+        </div>
+    <?php endif; ?>
+
+
+    <?php foreach (getFlashedMessages() as $error_message) : ?>
+        <div class="message message--error">
+            <?= $error_message ?>
+        </div>
+    <?php endforeach; ?>
+
+    <form action="handle-form.php<?= $is_edit ? '?id='.$contact_message_id : '' ?>" method="post">
 
         <label>
             Subject:<br>
-            <input type="text" name="subject" value="<?= $contact_message['subject'] ?>">
+            <input type="text" name="subject" value="<?= old('subject', $contact_message['subject']) ?>">
         </label>
 
-        <input type="submit" value="Send!">
+        <input type="submit" value="<?= $is_edit ? 'Update' : 'Insert' ?>">
 
     </form>
 
