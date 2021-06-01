@@ -1,0 +1,26 @@
+Table articles {
+  id int [pk, increment]
+  author_id int [ref: > authors.id]
+}
+
+Table authors {
+  id int [pk, increment]
+  user_id int [ref: - users.id]
+}
+
+Table users {
+  id int [pk, increment]
+}
+
+Table readers {
+  id int [pk, increment]
+  user_id int [ref: - users.id]
+}
+
+Table comments {
+  id int [pk, increment]
+  article_id int [ref: > articles.id]
+  reader_id int [ref: > readers.id]
+  text text
+  subject varchar(255)
+}

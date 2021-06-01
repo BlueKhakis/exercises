@@ -22,9 +22,27 @@ const load_movies = () => {
 }
 
 
+const load_movies_short = () => {
+    fetch('http://www.cbp-exercises.test/day27-ajax-databases/ajax/api/movies.php')
+        .then(r => r.json())
+        .then(data => {
+
+                const list = document.getElementById('list');
+
+                data.forEach(movie_name => {
+                    list.innerHTML += `<li>${movie_name}</li>`;
+                })
+            }
+        )
+}
+
+
 const load_movies_async = async () => {
 
+    //               await fetch promise's fulfillment
     const response = await fetch('http://www.cbp-exercises.test/day27-ajax-databases/ajax/api/movies.php')
+
+    //                     await response.json() promise's fulfillment
     const data_from_json = await response.json();
 
     const list = document.getElementById('list');

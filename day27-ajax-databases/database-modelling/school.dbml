@@ -1,0 +1,28 @@
+Table students {
+  id "unsigned int" [pk, increment]
+  user_id "unsigned int" [ref: - users.id]
+  mentor_id "unsigned int" [ref: > students.id]
+}
+
+Table users {
+  id "unsigned int" [pk, increment]
+}
+
+Table papers {
+  id "unsigned int" [pk, increment]
+  class_id "unsigned int" [ref: > classes.id]
+}
+
+Table paper_student {
+  paper_id "unsigned int" [pk, ref: > papers.id]
+  student_id "unsigned int" [pk, ref: > students.id]
+}
+
+Table classes {
+  id "unsigned int" [pk, increment]
+}
+
+Table class_student {
+  class_id "unsigned int" [pk, ref: > classes.id]
+  student_id "unsigned int" [pk, ref: > students.id]
+}
