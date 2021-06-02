@@ -20,7 +20,7 @@ var_dump($connection);
 $sql = "
     SELECT *
     FROM `countries`
-    WHERE `population` > 20000000
+    WHERE `population` > ?
     ORDER BY `population` ASC
     LIMIT 5
 ";
@@ -31,7 +31,7 @@ $statement = $connection->prepare($sql);
 var_dump($statement);
 
 // execute the statement
-$statement->execute();
+$statement->execute( [ 20000000 ] );
 
 // specify how I want the results
 $statement->setFetchMode(PDO::FETCH_CLASS, 'Country');

@@ -9,12 +9,19 @@ $success = connect('127.0.0.1', 'world', 'root', '');
 
 // run a query, get the results
 $results = select(
-    'SELECT * FROM `countries` WHERE `population` > 20000000',
-    [],
+    'SELECT *
+     FROM `countries`
+     WHERE `population` > ?
+     ORDER BY `population` ASC
+     LIMIT 9, 5
+    ',
+    [
+        20000000
+    ],
     'Country'
 );
 
-var_dump($results);
+// var_dump($results);
 
 // header('Content-type: application/json');
 
