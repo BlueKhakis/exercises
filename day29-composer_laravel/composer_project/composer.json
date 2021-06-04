@@ -1,0 +1,15 @@
+{
+    "name": "slavo/composer_project",
+    "description": "My first composer project",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Slavo Kozar",
+            "email": "slavo.kozar@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.3"
+    }
+}
