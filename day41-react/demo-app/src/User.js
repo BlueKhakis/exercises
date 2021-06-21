@@ -12,6 +12,16 @@ function User(props) {
             <strong>User</strong>
             <p>Name: {props.name}</p>
             <p>Rank: {props.rank}</p>
+
+            <p>Input: { props.input }</p>
+
+            <input
+                type="text"
+                onChange={(e) => {
+                    props.setInput(e.target.value);
+                }}
+            />
+
             <button
                 onClick={() => {
 

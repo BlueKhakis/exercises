@@ -1,4 +1,7 @@
 import React from 'react';
+import {useState} from 'react';
+
+
 import User from './User';
 
 const userList = [
@@ -13,14 +16,16 @@ const userList = [
 ];
 
 function UserList() {
-    const [selectedUser, setSelectedUser] = React.useState( "" );
+    const [selectedUser, setSelectedUser] = useState( "" );
+    const [input, setInput] = useState('');
 
     return (
         <div className="UserList">
 
             <p>Selected user: {selectedUser}</p>
 
-            {userList.map( ( user, i ) => (
+            {
+                userList.map( ( user, i ) => (
 
                 <User
                     key={i}
@@ -28,6 +33,8 @@ function UserList() {
                     rank={user.rank}
                     selectedUser={selectedUser}
                     setSelectedUser={setSelectedUser}
+                    input={input}
+                    setInput={setInput}
                 />
 
             ) )}

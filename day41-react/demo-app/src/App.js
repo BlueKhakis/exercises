@@ -7,21 +7,29 @@ function App() {
 
     let secondName = 'world';
 
+    const names = ['world', 'Slavo', 'Ondrej', 'Jan', 'Jana', 'Jade'];
+
+    const greetings = names
+        .filter((n, i) => i < 6)
+        .map( ( n, i ) => (
+            <Greeting key={i} name={n}/>
+        ) );
+
     return (
         <div>
 
-            <UserList/>
-
+            { greetings }
 
             <Greeting name="world"/>
             <Greeting name="Slavo"/>
             <Greeting name="Ondrej"/>
+            <Greeting name="Jan"/>
 
             <Greeting name={name}/>
             <Greeting name={secondName}/>
 
             <button onClick={() => {
-                setName('Ondrej');
+                setName( 'Ondrej' );
                 // secondName = 'Ondrej';
                 // console.log(secondName);
             }}>
@@ -29,12 +37,16 @@ function App() {
             </button>
 
             <button onClick={() => {
-                setName('Slavo');
+                setName( 'Slavo' );
                 // secondName = 'Slavo';
                 // console.log(secondName);
             }}>
                 Greet Slavo!
             </button>
+
+
+            <UserList/>
+
 
         </div>
     );
