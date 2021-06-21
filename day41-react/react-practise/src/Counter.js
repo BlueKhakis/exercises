@@ -1,13 +1,25 @@
 import React, {useState} from 'react';
+import ButtonPlus from "./ButtonPlus";
 
-export default function Counter( props ) {
+function Counter( props ) {
     const [counter, setCounter] = useState( 0 );
 
     return (
         <div>
             <p>Count: {counter}</p>
-            <button onClick={() => setCounter( counter + 1 )}>+</button>
-            <button onClick={() => setCounter( counter - 1 )}>-</button>
+
+            <ButtonPlus
+                counter={counter}
+                setCounter={setCounter}
+            />
+
+            <button onClick={() => {
+                setCounter( counter - 1 )
+            }}>
+                -
+            </button>
         </div>
     )
 }
+
+export default Counter;
