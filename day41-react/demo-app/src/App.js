@@ -1,5 +1,6 @@
 import {useState} from "react";
 import Greeting from './Greeting';
+import UserList from "./UserList";
 
 function App() {
     const [name, setName] = useState( 'world' );
@@ -8,6 +9,10 @@ function App() {
 
     return (
         <div>
+
+            <UserList/>
+
+
             <Greeting name="world"/>
             <Greeting name="Slavo"/>
             <Greeting name="Ondrej"/>
