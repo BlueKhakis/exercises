@@ -6,7 +6,7 @@ function Counter( props ) {
 
     return (
         <div>
-            <p>Count: {counter}</p>
+            <p>Count: {counter + props.globalCounter}</p>
 
             <ButtonPlus
                 counter={counter}
