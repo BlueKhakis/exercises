@@ -7,7 +7,7 @@ function App() {
 
     return (
         <>
-            <Counter globalCounter={globalCounter}/>
+            {/*<Counter globalCounter={globalCounter}/>*/}
             <Counter globalCounter={globalCounter}/>
             <Counter globalCounter={globalCounter}/>
 
@@ -16,6 +16,7 @@ function App() {
             }}>
                 Increment All
             </button>
+
             <button onClick={() => {
                 setGlobalCounter( globalCounter - 1 )
             }}>

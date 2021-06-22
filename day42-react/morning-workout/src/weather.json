@@ -1,0 +1,65 @@
+[
+  {
+    "day": "Monday",
+    "min": "-1",
+    "max": "6",
+    "img": "partly-cloudy.jpg",
+    "wind": "3 km/h",
+    "humidity": "84%",
+    "percipitation": "20%"
+  },
+  {
+    "day": "Tuesday",
+    "min": "-1",
+    "max": "7",
+    "img": "partly-sunny.jpg",
+    "wind": "8 km/h",
+    "humidity": "80%",
+    "percipitation": "20%"
+  },
+  {
+    "day": "Wednesday",
+    "min": "4",
+    "max": "11",
+    "img": "partly-sunny.jpg",
+    "wind": "10 km/h",
+    "humidity": "73%",
+    "percipitation": "20%"
+  },
+  {
+    "day": "Thursday",
+    "min": "1",
+    "max": "14",
+    "img": "raining.jpg",
+    "wind": "18 km/h",
+    "humidity": "72%",
+    "percipitation": "90%"
+  },
+  {
+    "day": "Friday",
+    "min": "-4",
+    "max": "3",
+    "img": "snowing.jpg",
+    "wind": "21 km/h",
+    "humidity": "61%",
+    "percipitation": "50%"
+  },
+  {
+    "day": "Saturday",
+    "min": "-2",
+    "max": "6",
+    "img": "partly-cloudy.jpg",
+    "wind": "11 km/h",
+    "humidity": "52%",
+    "percipitation": "10%"
+  },
+  {
+    "day": "Sunday",
+    "min": "-1",
+    "max": "7",
+    "img": "partly-cloudy.jpg",
+    "wind": "11 km/h",
+    "humidity": "61%",
+    "percipitation": "10%"
+  }
+]
