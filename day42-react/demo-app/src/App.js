@@ -1,9 +1,14 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import Greeting from './Greeting';
 import UserList from "./UserList";
+import HooksExample from "./HooksExample";
 
 function App() {
+
     const [name, setName] = useState( 'world' );
+
+
+    // const [name, setName] = useState( 'world' );
 
     let secondName = 'world';
 
@@ -15,24 +20,10 @@ function App() {
             <Greeting key={i} name={n}/>
         ) );
 
-    const [count, setCount] = useState(0);
-
-    useEffect(() => {
-        document.title = `You clicked ${count} times`;
-        // document.title = 'You clicked ' + count + ' times';
-    });
-
     return (
         <div>
 
-            <div>
-                <p>You clicked {count} times</p>
-                <button onClick={() => {
-                    setCount(count + 1)
-                }}>
-                    Click me
-                </button>
-            </div>
+            <HooksExample/>
 
             { greetings }
 
